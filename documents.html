@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documents - Ms. Darshi's Montessori Learning Center</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Page Hero */
+        .page-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8rem 0 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" patternUnits="userSpaceOnUse" width="50" height="50"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+
+        .breadcrumb a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            opacity: 1;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 6rem 0;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Important Notice */
+        .important-notice {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: white;
+            padding: 3rem;
+            border-radius: 25px;
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .important-notice::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M0,0 Q50,30 100,0 L100,100 Q50,70 0,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.2;
+        }
+
+        .notice-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .notice-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .notice-content p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Document Categories */
+        .document-categories {
+            display: grid;
+            gap: 4rem;
+        }
+
+        .document-category {
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .document-category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 70px rgba(0,0,0,0.15);
+        }
+
+        .category-header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .category-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: #ffd700;
+        }
+
+        .category-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .category-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+
+        .category-content {
+            padding: 3rem;
+        }
+
+        .document-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .document-item {
+            background: #f8f9ff;
+            padding: 2rem;
+            border-radius: 20px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .document-item:hover {
+            background: white;
+            border-color: #667eea;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.15);
+        }
+
+        .document-icon {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 1.5rem;
+        }
+
+        .document-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .document-item p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .download-btn,
+        .view-btn,
+        .request-btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin: 0.3rem;
+        }
+
+        .download-btn {
+            background: linear-gradient(45deg, #4ade80, #22c55e);
+            color: white;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(74, 222, 128, 0.3);
+        }
+
+        .view-btn {
+            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+            color: white;
+        }
+
+        .view-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .request-btn {
+            background: linear-gradient(45deg, #f59e0b, #d97706);
+            color: white;
+        }
+
+        .request-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            border-radius: 30px;
+            margin: 4rem 0;
+        }
+
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 1rem;
+            background: white;
+            color: #667eea;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: #f8f9ff;
+            padding: 4rem 0;
+            margin: 4rem 0;
+            border-radius: 25px;
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .faq-grid {
+            display: grid;
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .faq-question {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .faq-question:hover {
+            background: linear-gradient(135deg, #5a6fd8, #6b47a3);
+        }
+
+        .faq-answer {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-answer.active {
+            padding: 2rem;
+            max-height: 300px;
+        }
+
+        .faq-answer p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a2e;
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: #667eea;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p,
+        .footer-section li {
+            margin-bottom: 0.8rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #667eea;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #667eea;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: #ff6b6b;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            text-align: center;
+            opacity: 0.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(102, 126, 234, 0.95);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .category-header,
+            .category-content {
+                padding: 2rem;
+            }
+
+            .document-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Scroll animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                Ms. Darshi's MLC
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="mission.html">Our Mission</a>
+                <a href="curriculum.html">Curriculum</a>
+                <a href="documents.html" class="active">Documents</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact Us</a>
+            </nav>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="hero-content">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Documents</span>
+            </div>
+            <h1>Important Documents</h1>
+            <p>Access enrollment forms, policies, handbooks, and other essential documents for our Montessori learning community.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="section-container">
+            <!-- Important Notice -->
+            <section class="important-notice scroll-reveal">
+                <div class="notice-content">
+                    <h2><i class="fas fa-info-circle"></i> Important Information</h2>
+                    <p>Please ensure all required documents are completed and submitted before your child's start date. If you need assistance with any forms or have questions about our policies, please don't hesitate to contact our office.</p>
+                </div>
+            </section>
+
+            <!-- Document Categories -->
+            <section class="document-categories">
+                <!-- Enrollment Documents -->
+                <div class="document-category scroll-reveal">
+                    <div class="category-header">
+                        <i class="fas fa-user-plus category-icon"></i>
+                        <h2>Enrollment Documents</h2>
+                        <p>Essential forms and information needed to enroll your child in our program</p>
+                    </div>
+                    <div class="category-content">
+                        <div class="document-grid">
+                            <div class="document-item">
+                                <i class="fas fa-file-alt document-icon"></i>
+                                <h3>Enrollment Application</h3>
+                                <p>Complete application form for new students including child and family information.</p>
+                                <a href="#" class="download-btn"><i class="fas fa-download"></i> Download PDF</a>
+                            </div>
+                            
+                            <div class="document-item">
+                                <i class="fas fa-heartbeat document-icon"></i>
+                                <h3>Health & Medical Forms</h3>
+                                <p>Required health information, immunization records, and medical consent forms.</p>
+                                <a href="#" class="download-btn"><i class="fas fa-download"></i> Download PDF</a>
+                            </div>
+                            
+                            <div class="document-item">
+                                <i class="fas fa-phone document-icon"></i>
+                                <h3>Emergency Contact Form</h3>
+                                <p>Detailed emergency contact information and authorized pickup persons.</p>
+                                <a href="#" class="download-btn"><i class="fas fa-download"></i> Download PDF</a>
+                            </div>
+                            
+                            <div class="document-item">
+                                <i class="fas fa-dollar-sign document-icon"></i>
+                                <h3>Tuition & Fee Schedule</h3>
+                                <p>Current tuition rates, payment schedules, and fee information for all programs.</p>
+                                <a href="#" class="view-btn"><i class="fas fa-eye"></i> View Online</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Policies & Procedures -->
+                <div class="document-category scroll-reveal">
+                    <div class="category-header">
+                        <i class="fas fa-clipboard-list category-icon"></i>
+                        <h2>Policies & Procedures</h2>
+                        <p>Important policies and procedures that govern our learning environment</p>
+                    </div>
+                    <div class="category-content">
+                        <div class="document-grid">
+                            <div class="document-item">
+                                <i class="fas fa-book document-icon"></i>
+                                <h3>Parent Handbook</h3>
+                                <p>Comprehensive guide covering all aspects of our program, policies, and procedures.</p>
+                                <a href="#" class="view-btn"><i class="fas fa-eye"></i> View Online</a>
+                                <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a>
+                            </div>
+                            
+                            <div class="document-item">
+                                <i class="fas fa-shield-alt document-icon"></i>
+                                <h3>Health & Safety Policies</h3>
+                                <p>Detailed information about our health, safety, and emergency procedures.</p>
+                                <a href="#" class="view-btn"><i class="fas fa-eye"></i> View Online</a>
+                            </div>
+                            
+                            <div class="document-item">
+                                <i class="fas fa-utensils document-icon"></i>
+                                <h3>Nutrition & Meal Policies</h3>
+                                <p>Information about our meal programs, nutrition guidelines, and food allergies.</p>
+                                <a href="#" class="view-btn"><i class="fas fa-eye"></i> View Online</a>
+                            </div>
+                            
+                            <div class="document-item">
+                                <i class="fas fa-user-slash document-icon"></i>
+                                <h3>Discipline Policy</h3>
+                                <p>Our positive discipline approach and conflict resolution procedures.</p>
+                                <a href="#" class="view-btn"><i class="fas fa-eye"></i> View Online</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Educational Resources -->
+                <div class="document-category scroll-reveal">
+                    <div class="category-header">
+                        <i class="fas fa-graduation-cap category-icon"></i>
+                        <h2>Educational Resources</h2>
+                        <p>Resources to support your child's learning journey at home and school</p>
+                    </div>
+                    <div class="category-content">
+                        <div class="document-grid">
+                            <div class="document-item">
+                                <i class="fas fa-chalkboard-teacher document-icon"></i>
+                                <h3>Montessori Method Guide</h3>
+                                <p>Understanding the Montessori approach and how it benefits your child's development.</p>
+                                <a href="#" class="view-btn"><i class="fas fa-eye"></i> View Online</a>
+                                <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a>
+                            </div>
+                            
+                            <div class="document-item">
+                                <i class="fas fa-home document-icon"></i>
+                                <h3>Home Learning Activities</h3>
+                                <p>Simple Montessori-inspired activities you can do at home to support learning.</p>
+                                <a href="#" class="download-btn"><i class="fas fa-download"></i> Download PDF</a>
+                            </div>
+                            
+                            <div class="document-item">
+                                <i class="fas fa-calendar-alt document-icon"></i>
+                                <h3>School Calendar</h3>
+                                <p>Academic calendar with important dates, holidays, and school events.</p>
+                                <a href="#" class="view-btn"><i class="fas fa-eye"></i> View Calendar</a>
+                            </div>
+                            
+                            <div class="document-item">
+                                <i class="fas fa-chart-line document-icon"></i>
+                                <h3>Developmental Milestones</h3>
+                                <p>Age-appropriate developmental milestones and learning expectations.</p>
+                                <a href="#" class="view-btn"><i class="fas fa-eye"></i> View Online</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Licensing & Certifications -->
+                <div class="document-category scroll-reveal">
+                    <div class="category-header">
+                        <i class="fas fa-certificate category-icon"></i>
+                        <h2>Licensing & Certifications</h2>
+                        <p>Official documentation of our licenses, certifications, and accreditations</p>
+                    </div>
+                    <div class="category-content">
+                        <div class="document-grid">
+                            <div class="document-item">
+                                <i class="fas fa-award document-icon"></i>
+                                <h3>State License</h3>
+                                <p>California Department of Social Services Child Care License #376300898</p>
+                                <a href="#" class="view-btn"><i class="fas fa-eye"></i> View Certificate</a>
+                            </div>
+                            
+                            <div class="document-item">
+                                <i class="fas fa-graduation-cap document-icon"></i>
+                                <h3>Montessori Certification</h3>
+                                <p>Official Montessori training and certification documentation for our educators.</p>
+                                <a href="#" class="view-btn"><i class="fas fa-eye"></i> View Certificates</a>
+                            </div>
+                            
+                            <div class="document-item">
+                                <i class="fas fa-shield-alt document-icon"></i>
+                                <h3>Insurance Documentation</h3>
+                                <p>Proof of liability insurance and safety compliance documentation.</p>
+                                <a href="#" class="request-btn"><i class="fas fa-envelope"></i> Request Copy</a>
+                            </div>
+                            
+                            <div class="document-item">
+                                <i class="fas fa-file-medical document-icon"></i>
+                                <h3>Health Department Approval</h3>
+                                <p>Current health department inspections and approvals for our facility.</p>
+                                <a href="#" class="view-btn"><i class="fas fa-eye"></i> View Report</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="faq-section scroll-reveal">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How do I submit completed enrollment forms?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>You can submit completed forms by email to info@msdarshismlc.com, drop them off in person at our office, or mail them to our address. We recommend submitting forms at least 2 weeks before your desired start date.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What documents are required for enrollment?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Required documents include the completed enrollment application, health and medical forms with current immunization records, emergency contact information, and birth certificate. Additional forms may be required based on your child's specific needs.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How often are policies updated?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We review and update our policies annually or as needed to comply with state regulations and best practices. Parents are notified of any significant policy changes via email and updated handbooks are provided.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Can I get digital copies of all documents?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, most documents are available for download as PDFs. Some documents may require a signed request for privacy reasons. Please contact our office if you need assistance accessing any specific documents.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What if I have questions about the forms?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our staff is happy to help with any questions about forms or policies. You can call us at (323) 362-4301, email us, or schedule an appointment to review documents in person. We want to make the enrollment process as smooth as possible for families.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="cta-section scroll-reveal">
+                <div class="cta-content">
+                    <h2>Need Help with Documents?</h2>
+                    <p>Our team is here to assist you with any questions about enrollment forms or school policies.</p>
+                    <a href="contact.html" class="btn">
+                        <i class="fas fa-phone"></i>
+                        Contact Our Office
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Ms. Darshi's Montessori Learning Center</h3>
+                <p>Nurturing young minds through authentic Montessori education since 2014. We believe in creating a loving environment where children can flourish and develop a lifelong love for learning.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="mission.html">Our Mission</a></li>
+                    <li><a href="curriculum.html">Curriculum</a></li>
+                    <li><a href="documents.html">Documents</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Information</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 4174 Thomas Street<br>Oceanside, CA 92056</p>
+                <p><i class="fas fa-phone"></i> +1 (323) 362-4301</p>
+                <p><i class="fas fa-envelope"></i> info@msdarshismlc.com</p>
+                <p><i class="fas fa-certificate"></i> License #376300898</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Hours of Operation</h3>
+                <p>Monday - Friday: 7:30 AM - 5:30 PM</p>
+                <p>Saturday: 10:00 AM - 2:00 PM</p>
+                <p>Sunday: Closed</p>
+                <br>
+                <h3>Curriculum Areas</h3>
+                <ul>
+                    <li>Practical Life</li>
+                    <li>Sensorial</li>
+                    <li>Mathematics</li>
+                    <li>Language</li>
+                    <li>Culture Studies</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Ms. Darshi's Montessori Learning Center. All rights reserved. | Designed with ❤️ for our learning community</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('i');
+                
+                // Close all other FAQ items
+                document.querySelectorAll('.faq-answer').forEach(otherAnswer => {
+                    if (otherAnswer !== answer) {
+                        otherAnswer.classList.remove('active');
+                        otherAnswer.previousElementSibling.querySelector('i').classList.remove('fa-chevron-up');
+                        otherAnswer.previousElementSibling.querySelector('i').classList.add('fa-chevron-down');
+                    }
+                });
+                
+                // Toggle current FAQ item
+                answer.classList.toggle('active');
+                icon.classList.toggle('fa-chevron-down');
+                icon.classList.toggle('fa-chevron-up');
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Document buttons functionality
+        document.querySelectorAll('.download-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                alert('Document download would start here. Please contact the school for actual documents.');
+            });
+        });
+
+        document.querySelectorAll('.view-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                alert('Document viewer would open here. Please contact the school for actual documents.');
+            });
+        });
+
+        document.querySelectorAll('.request-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                alert('Request form would open here. Please contact the school to request documents.');
+            });
+        });
+
+        // Add hover effects to document items
+        document.querySelectorAll('.document-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum - Ms. Darshi's Montessori Learning Center</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Page Hero */
+        .page-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8rem 0 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" patternUnits="userSpaceOnUse" width="50" height="50"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+
+        .breadcrumb a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            opacity: 1;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 6rem 0;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Introduction Section */
+        .intro-section {
+            text-align: center;
+            margin-bottom: 6rem;
+        }
+
+        .intro-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .intro-section p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Curriculum Areas */
+        .curriculum-areas {
+            display: grid;
+            gap: 4rem;
+        }
+
+        .curriculum-area {
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .curriculum-area:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.15);
+        }
+
+        .area-header {
+            padding: 3rem 3rem 2rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .area-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transform: translate(30px, -30px);
+        }
+
+        .area-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #ffd700;
+        }
+
+        .area-header h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .area-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+        }
+
+        .area-content {
+            padding: 3rem;
+        }
+
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .material-item {
+            background: #f8f9ff;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .material-item:hover {
+            background: white;
+            border-color: #667eea;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.1);
+        }
+
+        .material-item i {
+            font-size: 2rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .material-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .material-item p {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        /* Age Groups Section */
+        .age-groups {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            padding: 6rem 0;
+            margin: 6rem 0;
+            border-radius: 30px;
+            color: white;
+            text-align: center;
+        }
+
+        .age-groups h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .age-groups-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .age-group {
+            background: rgba(255,255,255,0.1);
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .age-group:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-10px);
+        }
+
+        .age-group h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .age-group .age-range {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #ffd700;
+        }
+
+        .age-group ul {
+            list-style: none;
+            text-align: left;
+        }
+
+        .age-group li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .age-group li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4ade80;
+            font-weight: bold;
+        }
+
+        /* Assessment Section */
+        .assessment-section {
+            background: #f8f9ff;
+            padding: 6rem 0;
+            margin: 6rem 0;
+            border-radius: 30px;
+        }
+
+        .assessment-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .assessment-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .assessment-text p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .assessment-features {
+            list-style: none;
+        }
+
+        .assessment-features li {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .assessment-features li::before {
+            content: '📊';
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        .assessment-image {
+            text-align: center;
+        }
+
+        .assessment-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            border-radius: 30px;
+            margin: 4rem 0;
+        }
+
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 1rem;
+            background: white;
+            color: #667eea;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a2e;
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: #667eea;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p,
+        .footer-section li {
+            margin-bottom: 0.8rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #667eea;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #667eea;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: #ff6b6b;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            text-align: center;
+            opacity: 0.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(102, 126, 234, 0.95);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .area-header,
+            .area-content {
+                padding: 2rem;
+            }
+
+            .materials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .assessment-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .age-groups-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        /* Scroll animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                Ms. Darshi's MLC
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="mission.html">Our Mission</a>
+                <a href="curriculum.html" class="active">Curriculum</a>
+                <a href="documents.html">Documents</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact Us</a>
+            </nav>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="hero-content">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Curriculum</span>
+            </div>
+            <h1>Montessori Curriculum</h1>
+            <p>Discover our comprehensive five-area curriculum designed to nurture the whole child through hands-on learning and exploration.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="section-container">
+            <!-- Introduction -->
+            <section class="intro-section scroll-reveal">
+                <h2>Comprehensive Learning Through Five Key Areas</h2>
+                <p>Our authentic Montessori curriculum is carefully designed around five core areas that work together to provide a complete educational experience. Each area builds upon the others, creating a foundation for lifelong learning and development.</p>
+            </section>
+
+            <!-- Curriculum Areas -->
+            <section class="curriculum-areas">
+                <!-- Practical Life -->
+                <div class="curriculum-area scroll-reveal">
+                    <div class="area-header">
+                        <i class="fas fa-home area-icon"></i>
+                        <h3>Practical Life</h3>
+                        <p>The foundation of Montessori education, where children develop independence, concentration, and real-world skills through meaningful daily activities.</p>
+                    </div>
+                    <div class="area-content">
+                        <p>The Practical Life curriculum incorporates exercises and activities that children observe in daily life. These activities develop children's independence, concentration, and fine motor skills while building confidence and self-esteem.</p>
+                        
+                        <div class="materials-grid">
+                            <div class="material-item">
+                                <i class="fas fa-utensils"></i>
+                                <h4>Spooning & Scooping</h4>
+                                <p>Developing hand-eye coordination and precision</p>
+                            </div>
+                            <div class="material-item">
+                                <i class="fas fa-cut"></i>
+                                <h4>Food Preparation</h4>
+                                <p>Learning kitchen skills and healthy eating habits</p>
+                            </div>
+                            <div class="material-item">
+                                <i class="fas fa-hand-holding-heart"></i>
+                                <h4>Grace & Courtesy</h4>
+                                <p>Social skills and respectful communication</p>
+                            </div>
+                            <div class="material-item">
+                                <i class="fas fa-broom"></i>
+                                <h4>Cleaning Tasks</h4>
+                                <p>Care of environment and responsibility</p>
+                            </div>
+                            <div class="material-item">
+                                <i class="fas fa-seedling"></i>
+                                <h4>Plant Care</h4>
+                                <p>Nurturing living things and understanding growth</p>
+                            </div>
+                            <div class="material-item">
+                                <i class="fas fa-palette"></i>
+                                <h4>Threading</h4>
+                                <p>Fine motor development and concentration</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mathematics -->
+                <div class="curriculum-area scroll-reveal">
+                    <div class="area-header">
+                        <i class="fas fa-calculator area-icon"></i>
+                        <h3>Mathematics</h3>
+                        <p>Making abstract mathematical concepts concrete through specially designed materials that children can see, touch, and manipulate.</p>
+                    </div>
+                    <div class="area-content">
+                        <p>The Mathematics curriculum teaches children to understand abstract mathematical concepts through hands-on learning experiences. Children learn to count, identify numerals, and understand mathematical operations using beautiful, concrete materials.</p>
+                        
+                        <div class="materials-grid">
+                            <div class="material-item">
+                                <i class="fas fa-sort-numeric-up"></i>
+                                <h4>Numerals & Counters</h4>
+                                <p>Connecting quantity to symbol</p>
+                            </div>
+                            <div class="material-item">
+                                <i class="fas fa-grip-lines"></i>
+                                <h4>Hanging Bead Stair</h4>
+                                <p>Visual representation of quantities 1-10</p>
+                            </div>
+                            <div class="material-item">
+                                <i class="fas fa-th-large"></i>
+                                <h4>Teen Boards</h4>
+                                <p>Understanding numbers 11-19</p>
+                            </div>
+                            <div class="material-item">
+                                <i class="fas fa-th"></i>
+                                <h4>Hundred Board</h4>
+                                <p>Number patterns and sequences to 100</p>
+                            </div>
+                            <div class="material-item">
+                                <i class="fas fa-plus"></i>
+                                <h4>Addition Strip Board</h4>
+                                <p>Concrete introduction to addition</p>
+                            </div>
+                            <div class="material-item">
+                                <i class="fas fa-cubes"></i>
+                                <h4>Golden Beads</h4>
+                                <p>Decimal system and place value</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Language -->
+                <div class="curriculum-area scroll-reveal">
+                    <div class="area-header">
+                        <i class="fas fa-book area-icon"></i>
+                        <h3>Language</h3>
+                        <p>Building strong communication skills through phonetic learning, vocabulary development, and the joy of reading and writing.</p>
+                    </div>
+                    <div class="area-content">
+                        <p>The Language curriculum provides children with knowledge and skills to build vocabulary and understanding. Children develop reading, writing, and oral language skills through hands-on experience with carefully designed materials.</p>
+                        
+                        <div class="materials-grid">
+                            <div class="material-item">
+                                <i class="fas fa-hand-paper"></i>
+                                <h4>Sandpaper Letters</h4>
+                                <p>Tactile learning of letter sounds and formation</p>
+                            </div>
+                            <div class="material-item">
+                                <i class="fas fa-font"></i>
+                                <h4>Moveable Alphabet</h4>
+                                <p>Building words before mastering writing</p>
+                            </div>
+                            <div class="material-item">
+                                <i class="fas fa-pen-nib"></i>
+                                <h4>Metal Insets</h4>
+                                <p>Preparing for writing through tracing</p>
+                            </div>
+                            <div class="material-item">
+                                <i class="fas fa-images"></i>
+                                <h4>Three Part Cards</h4>
+                                <p>Vocabulary building and reading practice</p>
+                            </div>
+                            <div class="material-item">
+                                <i class="fas fa-microphone"></i>
+                                <h4>Phonics Games</h4>
+                                <p>Sound recognition and blending</p>
+                            </div>
+                            <div class="material-item">
+                                <i class="fas fa-book-open"></i>
+                                <h4>Reading Books</h4>
+                                <p>Progressive reading levels and comprehension</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sensorial -->
+                <div class="curriculum-area scroll-reveal">
+                    <div class="area-header">
+                        <i class="fas fa-eye area-icon"></i>
+                        <h3>Sensorial</h3>
+                        <p>Refining the senses and developing the ability to classify, organize, and discriminate through concrete experiences.</p>
+                    </div>
+                    <div class="area-content">
+                        <p>Sensorial activities teach children to refine their senses and organize sensory impressions. These materials prepare children for mathematics, language, and geometry by teaching classification, ordering, and discrimination.</p>
+                        
+                        <div class="materials-grid">
+                            <div class="material-item">
+                                <i class="fas fa-cube"></i>
+                                <h4>Pink Tower</h4>
+                                <p>Visual discrimination of dimension</p>
+                            </div>
+                            <div class="material-item">
+                                <i class="fas fa-palette"></i>
+                                <h4>Color Boxes</h4>
+                                <p>Color recognition and gradation</p>
+                            </div>
+                            <div class="material-item">
+                                <i class="fas fa-shapes"></i>
+                                <h4>Geometric Solids</h4>
+                                <p>Three-dimensional shape exploration</p>
+                            </div>
+                            <div class="material-item">
+                                <i class="fas fa-dice-d6"></i>
+                                <h4>Trinomial Cube</h4>
+                                <p>Algebraic concepts through manipulation</p>
+                            </div>
+                            <div class="material-item">
+                                <i class="fas fa-ruler"></i>
+                                <h4>Red Rods</h4>
+                                <p>Length discrimination and comparison</p>
+                            </div>
+                            <div class="material-item">
+                                <i class="fas fa-volume-up"></i>
+                                <h4>Sound Cylinders</h4>
+                                <p>Auditory discrimination and matching</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Culture -->
+                <div class="curriculum-area scroll-reveal">
+                    <div class="area-header">
+                        <i class="fas fa-globe area-icon"></i>
+                        <h3>Culture</h3>
+                        <p>Exploring the interconnectedness of all things through geography, science, history, art, and music, fostering global awareness and environmental stewardship.</p>
+                    </div>
+                    <div class="area-content">
+                        <p>The Culture curriculum incorporates geography, botany, zoology, science, history, music, and art. Children develop understanding of their community, world, and social responsibilities while learning to appreciate diversity.</p>
+                        
+                        <div class="materials-grid">
+                            <div class="material-item">
+                                <i class="fas fa-mountain"></i>
+                                <h4>Land & Water Forms</h4>
+                                <p>Geographic vocabulary and concepts</p>
+                            </div>
+                            <div class="material-item">
+                                <i class="fas fa-map"></i>
+                                <h4>Continent Maps</h4>
+                                <p>World geography and cultural awareness</p>
+                            </div>
+                            <div class="material-item">
+                                <i class="fas fa-leaf"></i>
+                                <h4>Botany Cabinet</h4>
+                                <p>Plant classification and life cycles</p>
+                            </div>
+                            <div class="material-item">
+                                <i class="fas fa-paw"></i>
+                                <h4>Animal Classification</h4>
+                                <p>Zoology and animal characteristics</p>
+                            </div>
+                            <div class="material-item">
+                                <i class="fas fa-microscope"></i>
+                                <h4>Science Experiments</h4>
+                                <p>Hands-on exploration of natural phenomena</p>
+                            </div>
+                            <div class="material-item">
+                                <i class="fas fa-music"></i>
+                                <h4>Music & Art</h4>
+                                <p>Creative expression and cultural appreciation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Age Groups -->
+            <section class="age-groups scroll-reveal">
+                <h2>Age-Appropriate Learning Progressions</h2>
+                <div class="age-groups-grid">
+                    <div class="age-group">
+                        <h3>Toddler Program</h3>
+                        <div class="age-range">18 months - 3 years</div>
+                        <ul>
+                            <li>Basic practical life skills</li>
+                            <li>Language development</li>
+                            <li>Sensory exploration</li>
+                            <li>Social interaction</li>
+                            <li>Independence building</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="age-group">
+                        <h3>Primary Program</h3>
+                        <div class="age-range">3 - 6 years</div>
+                        <ul>
+                            <li>Complete five-area curriculum</li>
+                            <li>Advanced practical life</li>
+                            <li>Reading and writing foundation</li>
+                            <li>Mathematical concepts</li>
+                            <li>Cultural studies exploration</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="age-group">
+                        <h3>Kindergarten</h3>
+                        <div class="age-range">5 - 6 years</div>
+                        <ul>
+                            <li>Leadership opportunities</li>
+                            <li>Advanced academic work</li>
+                            <li>Research projects</li>
+                            <li>Mentoring younger children</li>
+                            <li>School readiness preparation</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Assessment Section -->
+            <section class="assessment-section scroll-reveal">
+                <div class="assessment-content">
+                    <div class="assessment-text">
+                        <h2>Continuous Assessment & Progress Tracking</h2>
+                        <p>Our approach to assessment honors the individual development of each child. We use observation-based assessment methods that provide meaningful insights into your child's learning journey.</p>
+                        
+                        <p>Rather than traditional testing, our teachers carefully observe and document each child's progress, interests, and developmental milestones throughout their time with us.</p>
+                        
+                        <ul class="assessment-features">
+                            <li>Daily observation and documentation</li>
+                            <li>Individual learning portfolios</li>
+                            <li>Regular parent conferences</li>
+                            <li>Developmental milestone tracking</li>
+                            <li>Photographic learning records</li>
+                            <li>Transition readiness assessments</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="assessment-image">
+                        <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Teacher observing child learning">
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="cta-section scroll-reveal">
+                <div class="cta-content">
+                    <h2>Experience Our Curriculum in Action</h2>
+                    <p>See how our comprehensive Montessori curriculum nurtures your child's natural love of learning in our prepared environments.</p>
+                    <a href="contact.html" class="btn">
+                        <i class="fas fa-calendar"></i>
+                        Schedule a Classroom Visit
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Ms. Darshi's Montessori Learning Center</h3>
+                <p>Nurturing young minds through authentic Montessori education since 2014. We believe in creating a loving environment where children can flourish and develop a lifelong love for learning.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="mission.html">Our Mission</a></li>
+                    <li><a href="curriculum.html">Curriculum</a></li>
+                    <li><a href="documents.html">Documents</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Information</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 4174 Thomas Street<br>Oceanside, CA 92056</p>
+                <p><i class="fas fa-phone"></i> +1 (323) 362-4301</p>
+                <p><i class="fas fa-envelope"></i> info@msdarshismlc.com</p>
+                <p><i class="fas fa-certificate"></i> License #376300898</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Hours of Operation</h3>
+                <p>Monday - Friday: 7:30 AM - 5:30 PM</p>
+                <p>Saturday: 10:00 AM - 2:00 PM</p>
+                <p>Sunday: Closed</p>
+                <br>
+                <h3>Curriculum Areas</h3>
+                <ul>
+                    <li>Practical Life</li>
+                    <li>Sensorial</li>
+                    <li>Mathematics</li>
+                    <li>Language</li>
+                    <li>Culture Studies</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Ms. Darshi's Montessori Learning Center. All rights reserved. | Designed with ❤️ for our learning community</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add hover effects to material items
+        document.querySelectorAll('.material-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Curriculum area hover effects
+        document.querySelectorAll('.curriculum-area').forEach(area => {
+            area.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+            
+            area.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Mission - Ms. Darshi's Montessori Learning Center</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Page Hero */
+        .page-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8rem 0 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" patternUnits="userSpaceOnUse" width="50" height="50"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+
+        .breadcrumb a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            opacity: 1;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 6rem 0;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Mission Statement */
+        .mission-statement {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            margin-bottom: 4rem;
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mission-statement::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M0,0 Q50,30 100,0 L100,100 Q50,70 0,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.2;
+        }
+
+        .mission-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .mission-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .mission-content p {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Values Grid */
+        .values-section {
+            margin: 6rem 0;
+        }
+
+        .values-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .value-card {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+            background-clip: padding-box;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .value-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .value-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Philosophy Section */
+        .philosophy-section {
+            background: #f8f9ff;
+            padding: 6rem 0;
+            margin: 4rem 0;
+        }
+
+        .philosophy-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .philosophy-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .philosophy-text p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .philosophy-image {
+            position: relative;
+        }
+
+        .philosophy-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        /* Goals Section */
+        .goals-section {
+            margin: 6rem 0;
+        }
+
+        .goals-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .goals-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .goal-item {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .goal-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            transition: all 0.3s ease;
+            transform: scale(0);
+        }
+
+        .goal-item:hover::before {
+            transform: scale(1);
+        }
+
+        .goal-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .goal-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #ffd700;
+        }
+
+        .goal-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .goal-item p {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            border-radius: 30px;
+            margin: 4rem 0;
+        }
+
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 1rem;
+            background: white;
+            color: #667eea;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a2e;
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: #667eea;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p,
+        .footer-section li {
+            margin-bottom: 0.8rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #667eea;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #667eea;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: #ff6b6b;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            text-align: center;
+            opacity: 0.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(102, 126, 234, 0.95);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .philosophy-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .values-grid,
+            .goals-list {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        /* Scroll animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                Ms. Darshi's MLC
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="mission.html" class="active">Our Mission</a>
+                <a href="curriculum.html">Curriculum</a>
+                <a href="documents.html">Documents</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact Us</a>
+            </nav>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="hero-content">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Our Mission</span>
+            </div>
+            <h1>Our Mission & Values</h1>
+            <p>Discover the heart of our educational philosophy and what drives us to create exceptional learning experiences for every child.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="section-container">
+            <!-- Mission Statement -->
+            <section class="mission-statement scroll-reveal">
+                <div class="mission-content">
+                    <h2>Our Mission</h2>
+                    <p>At Ms. Darshi's Montessori Learning Center, our mission is to equip each child with knowledge for life: the essential knowledge, thinking skills, and strength of character required to flourish as joyous children today and as successful adults tomorrow.</p>
+                    <p>We are here to help happy and healthy children develop their full potential through authentic Montessori education, fostering independence, confidence, and a genuine love for learning that lasts a lifetime.</p>
+                </div>
+            </section>
+
+            <!-- Values Section -->
+            <section class="values-section scroll-reveal">
+                <h2>Our Core Values</h2>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <i class="fas fa-heart value-icon"></i>
+                        <h3>Kindness</h3>
+                        <p>We foster empathy, compassion, and respect for others in every interaction, creating a warm and loving environment where children feel safe to explore and grow.</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <i class="fas fa-lightbulb value-icon"></i>
+                        <h3>Creativity</h3>
+                        <p>We encourage innovative thinking, artistic expression, and creative problem-solving, helping children discover their unique talents and abilities.</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <i class="fas fa-smile value-icon"></i>
+                        <h3>Emotional Intelligence</h3>
+                        <p>We support the development of emotional awareness, self-regulation, and social skills that form the foundation for lifelong wellbeing and success.</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <i class="fas fa-rocket value-icon"></i>
+                        <h3>Innovation</h3>
+                        <p>We prepare children for a rapidly changing world by fostering curiosity, adaptability, and the confidence to embrace new challenges and opportunities.</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <i class="fas fa-users value-icon"></i>
+                        <h3>Community</h3>
+                        <p>We build strong connections between children, families, and educators, creating a supportive community that extends beyond the classroom.</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <i class="fas fa-star value-icon"></i>
+                        <h3>Excellence</h3>
+                        <p>We maintain the highest standards in Montessori education, ensuring authentic materials, qualified teachers, and meaningful learning experiences.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Philosophy Section -->
+            <section class="philosophy-section scroll-reveal">
+                <div class="philosophy-content">
+                    <div class="philosophy-text">
+                        <h2>Our Educational Philosophy</h2>
+                        <p>We believe that every child is naturally curious and capable of extraordinary learning when given the right environment and guidance. Our Montessori approach honors the child's natural development while providing structured opportunities for growth.</p>
+                        
+                        <p>The Montessori method recognizes that children learn best through hands-on exploration, self-directed activity, and collaborative play. We create prepared environments that encourage independence, concentration, and joy in learning.</p>
+                        
+                        <p>Our mixed-age classrooms foster natural mentorship, where older children develop leadership skills while younger children learn from positive role models. This creates a family-like atmosphere that mirrors real-world social dynamics.</p>
+                    </div>
+                    
+                    <div class="philosophy-image">
+                        <img src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Children learning together">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Goals Section -->
+            <section class="goals-section scroll-reveal">
+                <h2>Our Educational Goals</h2>
+                <div class="goals-list">
+                    <div class="goal-item">
+                        <div class="goal-number">01</div>
+                        <h3>Foster Independence</h3>
+                        <p>Help children develop self-confidence, decision-making skills, and the ability to work independently while knowing when to seek help.</p>
+                    </div>
+                    
+                    <div class="goal-item">
+                        <div class="goal-number">02</div>
+                        <h3>Develop Concentration</h3>
+                        <p>Provide uninterrupted work periods that allow children to develop deep focus and the satisfaction of completing meaningful tasks.</p>
+                    </div>
+                    
+                    <div class="goal-item">
+                        <div class="goal-number">03</div>
+                        <h3>Build Character</h3>
+                        <p>Instill values of respect, responsibility, and compassion through grace and courtesy lessons and positive social interactions.</p>
+                    </div>
+                    
+                    <div class="goal-item">
+                        <div class="goal-number">04</div>
+                        <h3>Inspire Learning</h3>
+                        <p>Cultivate a lifelong love of learning by making education joyful, relevant, and connected to the child's natural interests.</p>
+                    </div>
+                    
+                    <div class="goal-item">
+                        <div class="goal-number">05</div>
+                        <h3>Prepare for Life</h3>
+                        <p>Equip children with essential life skills, critical thinking abilities, and the confidence to succeed in future endeavors.</p>
+                    </div>
+                    
+                    <div class="goal-item">
+                        <div class="goal-number">06</div>
+                        <h3>Celebrate Uniqueness</h3>
+                        <p>Honor each child's individual learning style, pace, and interests while supporting their personal growth journey.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="cta-section scroll-reveal">
+                <div class="cta-content">
+                    <h2>Ready to Join Our Learning Community?</h2>
+                    <p>Experience firsthand how our mission and values come to life in our nurturing Montessori environment.</p>
+                    <a href="contact.html" class="btn">
+                        <i class="fas fa-calendar"></i>
+                        Schedule a Visit Today
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Ms. Darshi's Montessori Learning Center</h3>
+                <p>Nurturing young minds through authentic Montessori education since 2014. We believe in creating a loving environment where children can flourish and develop a lifelong love for learning.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="mission.html">Our Mission</a></li>
+                    <li><a href="curriculum.html">Curriculum</a></li>
+                    <li><a href="documents.html">Documents</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Information</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 4174 Thomas Street<br>Oceanside, CA 92056</p>
+                <p><i class="fas fa-phone"></i> +1 (323) 362-4301</p>
+                <p><i class="fas fa-envelope"></i> info@msdarshismlc.com</p>
+                <p><i class="fas fa-certificate"></i> License #376300898</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Hours of Operation</h3>
+                <p>Monday - Friday: 7:30 AM - 5:30 PM</p>
+                <p>Saturday: 10:00 AM - 2:00 PM</p>
+                <p>Sunday: Closed</p>
+                <br>
+                <h3>Curriculum Areas</h3>
+                <ul>
+                    <li>Practical Life</li>
+                    <li>Sensorial</li>
+                    <li>Mathematics</li>
+                    <li>Language</li>
+                    <li>Culture Studies</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Ms. Darshi's Montessori Learning Center. All rights reserved. | Designed with ❤️ for our learning community</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add hover effects to cards
+        document.querySelectorAll('.value-card, .goal-item').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
